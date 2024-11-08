@@ -6,15 +6,15 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class ClienteService {
+
     @Autowired
-   private ClienteRepository repository;
+    private ClienteRepository repository;
 
-   @Transactional
-   public Cliente save(Cliente cliente) {
+    @Transactional
+    public Cliente save(Cliente cliente) {
 
-       cliente.setHabilitado(Boolean.TRUE);
-       return repository.save(cliente);
-   }
-
-
+        cliente.setHabilitado(Boolean.TRUE);
+        return repository.save(cliente); 
+    }
+    
 }
