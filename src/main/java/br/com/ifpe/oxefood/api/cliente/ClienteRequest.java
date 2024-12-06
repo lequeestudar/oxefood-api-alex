@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import lombok.AllArgsConstructor;

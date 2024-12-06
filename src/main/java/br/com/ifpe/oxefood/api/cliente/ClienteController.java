@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.cliente.ClienteService;
 import jakarta.validation.Valid;
-
 import java.util.List;
 
 @RestController
