@@ -1,10 +1,18 @@
-package br.com.ifpe.oxefood.modelo.entregador;
+package br.com.ifpe.oxefood.modelo.funcionario;
 
 import java.time.LocalDate;
+
 import org.hibernate.annotations.SQLRestriction;
+
+import br.com.ifpe.oxefood.modelo.acesso.Usuario;
 import br.com.ifpe.oxefood.util.entity.EntidadeAuditavel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,59 +21,63 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "entregador")
+@Table(name = "Funcionario")
 @SQLRestriction("habilitado = true")
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Entregador extends EntidadeAuditavel {
-    @Column (nullable = false, length = 100)
+public class Funcionario extends EntidadeAuditavel {
+    
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private Usuario usuario;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoFuncionario tipo;
+
+    @Column
     private String nome;
 
-    @Column (unique = true)
+    @Column
     private String cpf;
 
-    @Column (unique = true)
+    @Column
     private String rg;
 
-    @Column (nullable = false)
+    @Column
     private LocalDate dataNascimento;
 
-    @Column (nullable = false)
+    @Column
     private String foneCelular;
 
-    @Column (nullable = false)
+    @Column
     private String foneFixo;
 
     @Column
-    private Integer qtdEntregasRealizadas;
+    private Double salario;
 
     @Column
-    private Double valorFrete;
-
-    @Column (nullable = false)
     private String enderecoRua;
 
-    @Column 
-    private String enderecoComplemento;
-
-    @Column (nullable = false)
+    @Column
     private String enderecoNumero;
 
-    @Column (nullable = false)
+    @Column
     private String enderecoBairro;
 
-    @Column (nullable = false)
+    @Column
     private String enderecoCidade;
 
-    @Column (nullable = false)
+    @Column
     private String enderecoCep;
 
-    @Column (nullable = false)
+    @Column
     private String enderecoUf;
 
-    @Column (nullable = false)
-    private Boolean ativo;
+    @Column
+    private String enderecoComplemento;
+
 }
